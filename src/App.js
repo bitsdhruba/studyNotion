@@ -14,13 +14,13 @@ function App() {
   
   return (
     <div>
-      <NavBar loggedin ={loggedin} setLoggedin={setLoggedin}/>
+      <NavBar loggedin={loggedin} setLoggedin={setLoggedin} />
 
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/dashboard" element={<Dashboard/>} />
-        <Route path="/signup" element={<SignUp/>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login setLoggedin={setLoggedin} />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/signup" element={<SignUp setLoggedin={setLoggedin} />} />
       </Routes>
     </div>
   );
