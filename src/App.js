@@ -13,7 +13,7 @@ function App() {
   const [loggedin, setLoggedin] = useState(false);
   
   return (
-    <div>
+    <div className="w-screen h-screen bg-blue-500 flex flex-col ">
       <NavBar loggedin={loggedin} setLoggedin={setLoggedin} />
 
       <Routes>

@@ -1,5 +1,5 @@
 import Templete from '../Components/Templete';
-import signupImage from '../assets/login_image.webp'
+import signupImage from '../assets/user.png'
 
 function SignUp({setLoggedin}) {
     return (

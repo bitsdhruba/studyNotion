@@ -7,13 +7,13 @@ import toast from "react-hot-toast";
 
 function NavBar({loggedin, setLoggedin}) {
   return (
-    <div className="flex justify-evenly">
+    <div className="flex justify-between items-center w-11/12 max-w-[1160px] py-4 mx-auto">
       <Link to="/">
         <img src={logo} alt="logo" width={160} height={32} loading="lazy"></img>
       </Link>
 
       <nav>
-        <ul className="flex gap-4">
+        <ul className="flex gap-x-6 text-richblack-900">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -26,20 +26,25 @@ function NavBar({loggedin, setLoggedin}) {
         </ul>
       </nav>
 
-      <div className="flex gap-4 ml-4 ">
+      <div className="flex items-center gap-x-4 text-richblack-900">
         {!loggedin && (
           <Link to="/Login">
-            <button>Login</button>
+            <button className="bg-richblack-900 py-[8px] px-[12px] rounded-[8px] border border-richblue-700">
+              Login
+            </button>
           </Link>
         )}
         {!loggedin && (
           <Link to="/Signup">
-            <button>Signup</button>
+            <button className="bg-richblack-900 py-[8px] px-[12px] rounded-[8px] border border-richblue-700">
+              Signup
+            </button>
           </Link>
         )}
         {loggedin && (
           <Link to="/">
             <button
+              className="bg-richblack-900 py-[8px] px-[12px] rounded-[8px] border border-richblue-700"
               onClick={() => {
                 setLoggedin(false);
                 toast.success("Logged out Successfully.");
@@ -51,7 +56,9 @@ function NavBar({loggedin, setLoggedin}) {
         )}
         {loggedin && (
           <Link to="/Dashboard">
-            <button>Dashboard</button>
+            <button className="bg-richblack-900 py-[8px] px-[12px] rounded-[8px] border border-richblue-700">
+              Dashboard
+            </button>
           </Link>
         )}
       </div>
