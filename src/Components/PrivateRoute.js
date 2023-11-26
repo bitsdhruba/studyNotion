@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 
-const PrivateRoute = ({loggedin, children})=> {
+ function PrivateRoute  ({loggedin, children}) {
 
         if(loggedin){children}
         else{<Navigate to="/login" />}
