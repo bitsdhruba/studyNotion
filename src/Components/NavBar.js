@@ -3,17 +3,23 @@ import { Link } from "react-router-dom";
 import logo from "../assets/Logo.svg";
 import toast from "react-hot-toast";
 
-
-
-function NavBar({loggedin, setLoggedin}) {
+function NavBar({ loggedin, setLoggedin }) {
   return (
-    <div className="flex justify-between items-center w-11/12 max-w-[1160px] py-4 mx-auto">
-      <Link to="/">
-        <img src={logo} alt="logo" width={160} height={32} loading="lazy"></img>
-      </Link>
+    <div className="flex justify-evenly items-center max-w-[1160px] h-16 bg-[#1D3557]">
+      <div>
+        <Link to="/">
+          <img
+            src={logo}
+            alt="logo"
+            width={160}
+            height={32}
+            loading="lazy"
+          ></img>
+        </Link>
+      </div>
 
-      <nav>
-        <ul className="flex gap-x-6 text-richblack-900">
+      <nav className="hidden sm:block">
+        <ul className="flex gap-x-6 text-richblack-900 ">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -29,14 +35,14 @@ function NavBar({loggedin, setLoggedin}) {
       <div className="flex items-center gap-x-4 text-richblack-900">
         {!loggedin && (
           <Link to="/Login">
-            <button className="bg-richblack-900 py-[8px] px-[12px] rounded-[8px] border border-richblue-700">
+            <button className="  text-white p-2 rounded-[8px] border border-richblue-700">
               Login
             </button>
           </Link>
         )}
         {!loggedin && (
           <Link to="/Signup">
-            <button className="bg-richblack-900 py-[8px] px-[12px] rounded-[8px] border border-richblue-700">
+            <button className=" text-white bg-[#E63946] p-2 rounded-[8px] border border-richblue-700">
               Signup
             </button>
           </Link>
@@ -44,7 +50,7 @@ function NavBar({loggedin, setLoggedin}) {
         {loggedin && (
           <Link to="/">
             <button
-              className="bg-richblack-900 py-[8px] px-[12px] rounded-[8px] border border-richblue-700"
+              className="bg-richblack-900 p-2 rounded-[8px] border border-richblue-700 text-white"
               onClick={() => {
                 setLoggedin(false);
                 toast.success("Logged out Successfully.");
@@ -56,7 +62,7 @@ function NavBar({loggedin, setLoggedin}) {
         )}
         {loggedin && (
           <Link to="/Dashboard">
-            <button className="bg-richblack-900 py-[8px] px-[12px] rounded-[8px] border border-richblue-700">
+            <button className="bg-[#E63946] text-white p-2 rounded-[8px] border border-richblue-700">
               Dashboard
             </button>
           </Link>
