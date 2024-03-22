@@ -1,8 +1,7 @@
-import bgImage from "../assets/pic1.avif";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 
-function Templete({ title, desc1, desc2, image, formType, setLoggedin }) {
+function Templete({ title, desc1, desc2, image, formType }) {
   return (
     <div className="p-4">
       <div>
@@ -11,8 +10,8 @@ function Templete({ title, desc1, desc2, image, formType, setLoggedin }) {
             {title}
           </h1>
           <p className="text-[1.125rem] mt-4 leading-[1.625rem]">
-            <p className="text-[#457B9D]">{desc1}</p>
-            <p className="text-[#457B9D] italic">{desc2}</p>
+            <span className="text-[#457B9D]">{desc1}</span>
+            <span className="text-[#457B9D] italic">{desc2}</span>
           </p>
         </div>
 
@@ -28,13 +27,7 @@ function Templete({ title, desc1, desc2, image, formType, setLoggedin }) {
         </div>
       </div>
 
-      <div>
-        {formType === "login" ? (
-          <LoginForm setLoggedin={setLoggedin} />
-        ) : (
-          <SignupForm setLoggedin={setLoggedin} />
-        )}
-      </div>
+      <div>{formType === "login" ? <LoginForm /> : <SignupForm />}</div>
 
       <div>
         <div className="flex w-full items-center my-4 gap-x-2">

@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { PiEye, PiEyeClosedDuotone } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { AppContext } from "../context/AppContext";
 
-function SignupForm({ setLoggedin }) {
+function SignupForm() {
+  const { setLoggedin } = useContext(AppContext);
+
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState(false);
 
@@ -35,7 +38,7 @@ function SignupForm({ setLoggedin }) {
       return;
     }
     setLoggedin(true);
-    navigate("/dashboard");
+    navigate("/");
     toast.success("Account Created Successfully");
   }
 

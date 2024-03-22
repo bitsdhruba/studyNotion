@@ -5,29 +5,28 @@ import Dashboard from "./pages/Dashboard";
 import SignUp from "./pages/SignUp";
 import NavBar from "./Components/NavBar";
 import Login from "./pages/Login";
-import { useState } from "react";
 import PrivateRoute from "./Components/PrivateRoute";
+import Footer from "./Components/Footer";
 
 function App() {
-  const [loggedin, setLoggedin] = useState(false);
-
   return (
     <>
-      <NavBar loggedin={loggedin} setLoggedin={setLoggedin} />
+      <NavBar />
 
       <Routes>
-        <Route path="/" element={<Home loggedin={loggedin} />} />
-        <Route path="/login" element={<Login setLoggedin={setLoggedin} />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route
           path="/dashboard"
           element={
-            <PrivateRoute loggedin={loggedin}>
+            <PrivateRoute>
               <Dashboard />
             </PrivateRoute>
           }
         />
-        <Route path="/signup" element={<SignUp setLoggedin={setLoggedin} />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
+      <Footer />
     </>
   );
 }

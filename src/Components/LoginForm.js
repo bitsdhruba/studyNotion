@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { PiEye, PiEyeClosedDuotone } from "react-icons/pi";
 import { Link, useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
 
-function LoginForm({ setLoggedin }) {
+function LoginForm() {
+  const { setLoggedin } = useContext(AppContext);
+
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   function onChangeHandler(event) {
@@ -22,7 +25,7 @@ function LoginForm({ setLoggedin }) {
   function onSubmitHandler(event) {
     event.preventDefault();
     setLoggedin(true);
-    navigate("/dashboard");
+    navigate("/");
     toast.success("Logged In");
   }
 
