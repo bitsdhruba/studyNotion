@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import LikedCourses from "../Components/LikedCourses";
+import Course from "../Components/Course";
 
 function Dashboard() {
   const { Liked } = useSelector((state) => state);
@@ -13,7 +13,7 @@ function Dashboard() {
       <div className="flex flex-wrap gap-4 my-8 justify-center">
         {Liked.length > 0 ? (
           Liked.map((course) => {
-            return <LikedCourses course={course} key={course.id} />;
+            return <Course course={course} key={course.id} />;
           })
         ) : (
           <div className="flex flex-col justify-center items-center">

@@ -25,7 +25,7 @@ function Home() {
   return (
     <div className="max-w-[1200px] mx-auto p-4 h-fit">
       <div className="my-8">
-        <h1 className="text-5xl text-[#1D3557] font-medium text-center my-4 border-b-2 border-slate-400 shadow-lg">
+        <h1 className="text-5xl text-[#1D3557] font-medium text-center py-4 my-4 border-b-2 border-slate-400 shadow-lg">
           Welcome to StudyNotion
         </h1>
 
