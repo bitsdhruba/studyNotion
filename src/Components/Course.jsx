@@ -1,32 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import toast from "react-hot-toast";
 import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import { AppContext } from "../context/AppContext";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addDashboard, removeDashboard } from "../redux/Slice";
 
 const Course = ({ course }) => {
   const { loggedin } = useContext(AppContext);
-  const [like, setLike] = useState([]);
 
-  // const likeHandler = () => {
-  //   if (!loggedin) {
-  //     toast.error("Login or Signup to Like !");
-  //   } else {
-  //     if (like.length === 0) {
-  //       setLike([course.id]);
-  //       toast.success("Added to Like");
-  //     } else {
-  //       if (like.includes(course.id)) {
-  //         setLike((prev) => prev.filter((e) => e !== course.id));
-  //         toast.error("Removed");
-  //       } else {
-  //         setLike([...like, course.id]);
-  //         toast.success("Added to Like");
-  //       }
-  //     }
-  //   }
-  // };
+  const { Liked } = useSelector((state) => state);
 
   const dispatch = useDispatch();
 
@@ -34,22 +16,14 @@ const Course = ({ course }) => {
     if (!loggedin) {
       toast.error("Login to Like");
     } else {
-      if (like.length === 0) {
-        dispatch(addDashboard(course));
-        setLike([course.id]);
-        toast.success("Added to Like");
-      } else {
-        if (like.includes(course.id)) {
-          setLike((prev) => prev.filter((e) => e !== course.id));
-          dispatch(removeDashboard(course.id));
-          toast.error("Removed from Like");
-        } else {
-          setLike([...like, course.id]);
-          dispatch(addDashboard(course));
-          toast.success("Added to Like");
-        }
-      }
+      dispatch(addDashboard(course));
+      toast.success("Added to Like");
     }
+  }
+
+  function unlikeHandler() {
+    dispatch(removeDashboard(course.id));
+    toast.error("Removed from Like");
   }
 
   return (
@@ -58,13 +32,15 @@ const Course = ({ course }) => {
         <img src={course.image.url} alt="Kuch toh hai..."></img>
         <div className="rounded-full w-[40px] h-[40px] bg-white absolute right-2 bottom-[-12px] grid place-items-center">
           {" "}
-          <button onClick={likehandler}>
-            {like.includes(course.id) ? (
+          {Liked.some((e) => e.id === course.id) ? (
+            <button onClick={unlikeHandler}>
               <FcLike className="text-3xl" />
-            ) : (
+            </button>
+          ) : (
+            <button onClick={likehandler}>
               <FcLikePlaceholder className="text-3xl" />
-            )}
-          </button>
+            </button>
+          )}
         </div>
       </div>
       <div className="p-4">
