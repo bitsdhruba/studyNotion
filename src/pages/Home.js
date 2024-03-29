@@ -1,24 +1,12 @@
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { courseapi } from "../api/api";
+import { useContext, useEffect } from "react";
 import Course from "../Components/Course";
 import Loader from "../Components/Loader";
 import { AppContext } from "../context/AppContext";
 
 function Home() {
-  const { loggedin } = useContext(AppContext);
-
-  const [courses, setCourses] = useState();
-  const [load, setLoad] = useState(false);
+  const { loggedin, courses, load, fetchCourses } = useContext(AppContext);
 
   useEffect(() => {
-    const fetchCourses = async () => {
-      setLoad(true);
-      const { data } = await axios.get(courseapi());
-      const catagory = Object.values(data.data);
-      setCourses(catagory);
-      setLoad(false);
-    };
     fetchCourses();
   }, []);
 

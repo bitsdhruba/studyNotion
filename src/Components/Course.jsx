@@ -30,7 +30,7 @@ const Course = ({ course }) => {
   return (
     <div className="bg-[#457B9D]  w-[356px] rounded-md overflow-hidden shadow-lg hover:scale-105 hover:shadow-xl hover:bg-[#69acd6] duration-300">
       <div className="relative ">
-        <img src={course.image.url} alt="Kuch toh hai..."></img>
+        <img src={course.image.url} alt="background"></img>
         <div className="rounded-full w-[40px] h-[40px] bg-white absolute right-2 bottom-[-12px] grid place-items-center">
           {" "}
           {Liked.some((e) => e.id === course.id) ? (
