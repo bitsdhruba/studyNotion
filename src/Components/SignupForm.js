@@ -44,7 +44,7 @@ function SignupForm() {
 
   return (
     <>
-      <div className="flex border-2 border-[#1D3557]  bg-[#F1FAEE] p-2 my-4 justify-evenly rounded-full w-full">
+      <div className="flex shadow-md  bg-[#F1FAEE] p-2 my-4 justify-evenly rounded-full w-full">
         <button
           onClick={() => setAccountType("student")}
           className={`${
